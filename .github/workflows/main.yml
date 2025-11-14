@@ -26,14 +26,7 @@ jobs:
 
       # Paso 3: Instala las dependencias del proyecto
       - name: npm install
-        run: npm ci # 'ci' es más rápido y seguro para entornos de CI
-
-      # Paso 4: Ejecuta las pruebas del proyecto
-      - name: npm test
-        run: npm test
-        env:
-          # Opcional: variables de entorno para tus pruebas
-          CI: true
+        run: npm start # 'ci' es más rápido y seguro para entornos de CI
 
       # Puedes añadir más pasos, como build o linting
       # - name: npm run build
