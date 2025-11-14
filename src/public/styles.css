@@ -1,0 +1,250 @@
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.game-container {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+#gameTableContainer #tableHeader > th {
+    min-width: 100px;
+}
+
+.letter-display {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #667eea;
+    text-align: center;
+    margin: 20px 0;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+    animation: pulse 0.3s ease-in-out;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.letter-selecting {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    padding: 30px;
+    border-radius: 15px;
+    margin: 20px 0;
+}
+
+.basta-btn {
+    font-size: 2rem;
+    padding: 20px 60px;
+    animation: shake 0.5s infinite;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+.game-table input {
+    border: 2px solid #dee2e6;
+    transition: all 0.3s;
+}
+
+.game-table input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+.game-table input:disabled {
+    background-color: #f8f9fa;
+}
+
+.player-list {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.player-item {
+    padding: 8px;
+    margin: 5px 0;
+    background: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.host-badge {
+    background: #ffc107;
+    color: #000;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.score-badge {
+    background: #667eea;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.column-config {
+    background: #e7f3ff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.connection-status {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    z-index: 1000;
+}
+
+.connected {
+    background: #28a745;
+    color: white;
+}
+
+.disconnected {
+    background: #dc3545;
+    color: white;
+}
+
+.round-indicator {
+    background: #667eea;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.final-results {
+    background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+    padding: 30px;
+    border-radius: 15px;
+    color: white;
+}
+
+.podium {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 30px 0;
+    gap: 20px;
+}
+
+.podium-place {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 120px;
+}
+
+.podium-1 {
+    background: gold;
+    height: 180px;
+    order: 2;
+}
+
+.podium-2 {
+    background: silver;
+    height: 140px;
+    order: 1;
+}
+
+.podium-3 {
+    background: #cd7f32;
+    height: 100px;
+    order: 3;
+}
+
+.podium-place h3 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.validation-container {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 30px;
+    margin-top: 20px;
+}
+
+.validation-item {
+    background: white;
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.validation-word {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #667eea;
+    margin-bottom: 10px;
+}
+
+.vote-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.vote-btn {
+    min-width: 100px;
+}
+
+.validation-header {
+    background: #667eea;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.answer-valid {
+    background-color: #d4edda !important;
+    border-color: #28a745 !important;
+}
+
+.answer-invalid {
+    background-color: #f8d7da !important;
+    border-color: #dc3545 !important;
+    text-decoration: line-through;
+}

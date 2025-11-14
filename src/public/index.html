@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TuttiFrutti</title>
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div id="connectionStatus" class="connection-status disconnected">Desconectado</div>
+    
+    <div class="container">
+        <div class="game-container">
+            <!-- Pantalla de Login -->
+            <div id="loginScreen">
+                <h1 class="text-center mb-4">🎮 TuttiFrutti Multijugador</h1>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Ingresa tu nombre</h5>
+                                <input type="text" id="playerName" class="form-control mb-3" placeholder="Tu nombre" maxlength="20">
+                                <button class="btn btn-primary w-100" onclick="joinGame()">Unirse al juego</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pantalla de Juego -->
+            <div id="gameScreen" style="display: none;">
+                <h1 class="text-center mb-4">🎮 TuttiFrutti</h1>
+                
+                <!-- Indicador de Ronda -->
+                <div id="roundIndicator" class="round-indicator" style="display: none;">
+                    Ronda <span id="currentRound">1</span> de <span id="maxRounds">10</span>
+                </div>
+
+                <!-- Lista de Jugadores -->
+                <div class="player-list">
+                    <h5>👥 Jugadores conectados</h5>
+                    <div id="playersList"></div>
+                </div>
+
+                <!-- Configuración de Columnas (solo para host) -->
+                <div id="columnConfig" class="column-config" style="display: none;">
+                    <h5>⚙️ Configurar Columnas (Máximo 10)</h5>
+                    <div id="columnInputs" class="mb-3"></div>
+                    <button class="btn btn-success" onclick="saveColumns()">Guardar Columnas</button>
+                </div>
+
+                <!-- Controles del Host -->
+                <div id="hostControls" style="display: none;" class="text-center mb-3">
+                    <button class="btn btn-lg btn-success" onclick="startRound()">Iniciar Ronda</button>
+                </div>
+
+                <!-- Selección de Letra -->
+                <div id="letterSelection" class="letter-selecting" style="display: none;">
+                    <div class="letter-display" id="letterDisplaySelecting"></div>
+                    <div class="text-center">
+                        <button id="bastaBtn" class="btn btn-danger basta-btn" onclick="callBasta()">¡BASTA!</button>
+                    </div>
+                </div>
+
+                <!-- Letra Seleccionada -->
+                <div id="letterDisplay" class="letter-display" style="display: none;"></div>
+
+                <!-- Tabla de Juego -->
+                <div id="gameTableContainer" style="display: none;">
+                    <div class="table-responsive">
+                        <table class="table table-bordered game-table">
+                            <thead class="table-dark">
+                                <tr id="tableHeader"></tr>
+                            </thead>
+                            <tbody id="tableBody"></tbody>
+                        </table>
+                    </div>
+                    <div class="text-center mt-3">
+                        <button id="stopBtn" class="btn btn-danger btn-lg" onclick="callStop()">¡STOP!</button>
+                    </div>
+                </div>
+
+                <!-- Validación de Respuestas -->
+                <div id="validationContainer" class="validation-container" style="display: none;">
+                    <div class="validation-header">
+                        <h3>🗳️ Valida las respuestas de los demás jugadores</h3>
+                        <p class="mb-0">Vota si cada palabra es válida o no. ¡Sé justo!</p>
+                    </div>
+                    <div id="validationList"></div>
+                </div>
+
+                <!-- Resultados de Ronda -->
+                <div id="resultsContainer" style="display: none;" class="mt-4">
+                    <h3 class="text-center">📊 Resultados de la Ronda</h3>
+                    <div id="resultsTable" class="table-responsive"></div>
+                    <div class="text-center mt-3">
+                        <button id="nextRoundBtn" class="btn btn-primary" onclick="prepareNextRound()">Siguiente Ronda</button>
+                    </div>
+                </div>
+
+                <!-- Resultados Finales -->
+                <div id="finalResults" class="final-results" style="display: none;">
+                    <h2 class="text-center mb-4">🏆 ¡Juego Terminado!</h2>
+                    <div id="podiumContainer" class="podium"></div>
+                    <div id="finalScoresTable" class="mt-4"></div>
+                    <div class="text-center mt-4">
+                        <button id="resetGameBtn" class="btn btn-light btn-lg" onclick="resetGame()" style="display: none;">
+                            🔄 Reiniciar Juego
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="client.js"></script>
+</body>
+</html>
