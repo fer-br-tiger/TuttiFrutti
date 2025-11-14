@@ -26,7 +26,10 @@ jobs:
 
       # Paso 3: Instala las dependencias del proyecto
       - name: npm install
-        run: npm start # 'ci' es más rápido y seguro para entornos de CI
+        run: npm install # 'ci' es más rápido y seguro para entornos de CI
+
+      - name: npm start
+        run: npm start
 
       # Puedes añadir más pasos, como build o linting
       # - name: npm run build
